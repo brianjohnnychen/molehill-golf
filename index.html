@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Molehill Golf Co. – Golf gear built for small hands</title>
+<meta name="description" content="Junior golf club sets, soft-strike foam balls, big tees and practice gear sized for kids from 36 to 60 inches tall. Trade up as they grow.">
+<meta property="og:title" content="Molehill Golf Co.">
+<meta property="og:description" content="Golf gear built for small hands. Junior club sets sized by height, not age.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%23A8DDF6'/%3E%3Cpath d='M2 34 Q20 6 38 34 Z' fill='%233FA34D'/%3E%3Cellipse cx='20' cy='27' rx='7' ry='2.6' fill='%231B2E1B'/%3E%3Crect x='24' y='9' width='2' height='18' fill='%23fff'/%3E%3Cpath d='M26 9 L35 13 L26 17 Z' fill='%23F28C28'/%3E%3C/svg%3E">
+<style>
+@font-face{font-family:"Lilita One";src:url(fonts/LilitaOne-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Nunito";src:url(fonts/Nunito-Variable.woff2) format("woff2");font-weight:200 1000;font-display:swap}
+
+:root{
+  --sky:#A8DDF6;
+  --sky-light:#E3F3FC;
+  --turf:#3FA34D;
+  --turf-deep:#1E5E32;
+  --turf-dark:#2E7D3A;
+  --soil:#6B4A2E;
+  --ball:#FFFCF5;
+  --sand:#F6D98A;
+  --sand-light:#FBEFC8;
+  --flag:#F28C28;
+  --ink:#23361F;
+  --ink-soft:#4F6249;
+  --display:"Lilita One","Arial Rounded MT Bold","Nunito",sans-serif;
+  --body:"Nunito","Segoe UI",Helvetica,Arial,sans-serif;
+  --wrap:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ball);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.05;margin:0;color:var(--turf-deep);letter-spacing:.005em}
+h1{font-size:clamp(2.6rem,7.2vw,4.6rem)}
+h2{font-size:clamp(1.9rem,4.2vw,2.8rem)}
+h3{font-size:1.35rem}
+p{margin:0}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+.wrap{width:min(var(--wrap),100% - 2.5rem);margin-inline:auto}
+:focus-visible{outline:3px solid var(--flag);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--body);font-weight:800;font-size:1.0625rem;padding:.85rem 1.4rem;border-radius:999px;border:2px solid transparent;text-decoration:none;cursor:pointer;transition:transform .12s ease,background-color .12s ease}
+.btn:active{transform:scale(.97)}
+.btn-flag{background:var(--flag);color:var(--ink)}
+.btn-flag:hover{background:#F79B45}
+.btn-line{background:transparent;color:var(--turf-deep);border-color:var(--turf-deep)}
+.btn-line:hover{background:rgba(30,94,50,.08)}
+.btn-white{background:#fff;color:var(--turf-deep)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:10;background:var(--sky-light);border-bottom:1px solid rgba(30,94,50,.12)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:66px}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--turf-deep);font-family:var(--display);font-size:1.35rem}
+.brand svg{width:36px;height:30px}
+.nav-links{display:none;gap:1.6rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--turf-deep)}
+.nav-links a:hover{text-decoration:underline;text-underline-offset:4px}
+.nav .btn{padding:.6rem 1.15rem;font-size:1rem}
+@media (min-width:760px){.nav-links{display:flex}}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--sky-light) 0%,var(--sky) 100%);overflow:hidden}
+.hero .wrap{display:grid;gap:1.5rem;align-items:end;padding-top:2.75rem}
+.hero-copy{padding-bottom:1rem}
+.hero-copy p{margin-top:1.1rem;font-size:1.15rem;max-width:32ch;color:var(--ink)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.6rem}
+.scene{width:min(100%,560px);margin-inline:auto;margin-bottom:-2px}
+@media (min-width:900px){
+  .hero .wrap{grid-template-columns:1.05fr 1fr;gap:3rem;padding-top:4rem}
+  .hero-copy{padding-bottom:4.5rem}
+  .scene{margin-inline:0 auto;width:100%}
+}
+/* the single motion moment: Divot pops out of the hole once */
+.divot-body{transform:translateY(0);transform-origin:center}
+.divot-paws{opacity:1}
+@media (prefers-reduced-motion:no-preference){
+  .divot-body{animation:pop .9s cubic-bezier(.2,1.2,.4,1) .25s both}
+  .divot-paws{animation:appear .3s ease .85s both}
+  @keyframes pop{from{transform:translateY(150px)}to{transform:translateY(0)}}
+  @keyframes appear{from{opacity:0}to{opacity:1}}
+}
+
+/* green ground band */
+.ground{background:var(--turf);color:#fff}
+.ground .wrap{display:grid;gap:1.25rem;padding:1.75rem 0 2rem}
+.fact{display:flex;gap:.9rem;align-items:flex-start}
+.fact svg{flex:0 0 40px;width:40px;height:40px}
+.fact strong{display:block;font-family:var(--display);font-weight:400;font-size:1.25rem;line-height:1.1;margin-bottom:.2rem}
+.fact span{font-size:.98rem;opacity:.95}
+@media (min-width:760px){.ground .wrap{grid-template-columns:repeat(3,1fr);gap:2rem;padding:2.25rem 0 2.5rem}}
+
+/* sections */
+section.block{padding:4rem 0}
+.block-head{max-width:56ch;margin-bottom:2rem}
+.block-head p{margin-top:.75rem;color:var(--ink-soft);font-size:1.1rem}
+
+/* club sets */
+.sets{display:grid;gap:1.25rem}
+@media (min-width:760px){.sets{grid-template-columns:repeat(3,1fr);gap:1.5rem}}
+.set{border-radius:24px;overflow:hidden;background:#fff;border:2px solid rgba(30,94,50,.12);display:flex;flex-direction:column;transition:border-color .2s ease,box-shadow .2s ease}
+.set.is-fit{border-color:var(--turf-deep);box-shadow:0 0 0 4px rgba(63,163,77,.25)}
+.set-art{padding:1.25rem 1.5rem 0;aspect-ratio:16/10;display:flex;align-items:flex-end}
+.set-art svg{width:100%;height:auto}
+.set-sprout .set-art{background:#CFEAFB}
+.set-fairway .set-art{background:#D6EFCF}
+.set-birdie .set-art{background:#FCE0C2}
+.set-body{padding:1.25rem 1.5rem 1.5rem;display:flex;flex-direction:column;gap:.7rem;flex:1}
+.size-tag{display:inline-block;align-self:flex-start;font-weight:800;font-size:.95rem;padding:.3rem .8rem;border-radius:999px;color:var(--ink)}
+.set-sprout .size-tag{background:#CFEAFB}
+.set-fairway .size-tag{background:#D6EFCF}
+.set-birdie .size-tag{background:#FCE0C2}
+.set-body ul{margin:0;padding-left:1.15rem;color:var(--ink-soft);font-size:.98rem}
+.set-body li+li{margin-top:.15rem}
+.set-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.5rem}
+.price{font-family:var(--display);font-size:1.6rem;color:var(--turf-deep)}
+.set-foot .btn{padding:.65rem 1.1rem;font-size:.98rem}
+
+/* size finder */
+.finder-wrap{background:var(--sand-light);border-radius:28px;padding:1.75rem 1.5rem}
+@media (min-width:760px){.finder-wrap{padding:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}}
+.finder label.big{display:block;font-weight:800;margin-bottom:.5rem}
+.readout{font-family:var(--display);font-size:clamp(2.4rem,6vw,3.6rem);color:var(--turf-deep);line-height:1;display:flex;align-items:baseline;gap:.4rem;margin-bottom:.75rem}
+.readout small{font-family:var(--body);font-weight:800;font-size:1.1rem;color:var(--ink-soft)}
+input[type=range]{width:100%;accent-color:var(--turf-deep);margin:.25rem 0 .6rem}
+.range-ends{display:flex;justify-content:space-between;font-size:.9rem;color:var(--ink-soft);font-weight:700}
+.units{display:inline-flex;border:2px solid var(--turf-deep);border-radius:999px;overflow:hidden;margin-top:1.1rem}
+.units button{font-family:var(--body);font-weight:800;font-size:.95rem;background:transparent;border:0;color:var(--turf-deep);padding:.45rem 1rem;cursor:pointer}
+.units button[aria-pressed=true]{background:var(--turf-deep);color:#fff}
+.verdict{background:#fff;border-radius:20px;padding:1.5rem;margin-top:1.5rem}
+@media (min-width:760px){.verdict{margin-top:0}}
+.verdict h3{font-size:1.8rem;margin-bottom:.35rem}
+.verdict .range{font-weight:800;color:var(--ink-soft);margin-bottom:.8rem}
+.verdict p{color:var(--ink)}
+.verdict .btn{margin-top:1.1rem}
+.finder-note{margin-top:1rem;font-size:.95rem;color:var(--ink-soft)}
+
+/* accessories */
+.gear{display:grid;gap:2rem 1.25rem;grid-template-columns:repeat(2,1fr)}
+@media (min-width:760px){.gear{grid-template-columns:repeat(4,1fr);gap:2rem}}
+.item{text-decoration:none;color:inherit}
+.item-art{aspect-ratio:1;border-radius:50%;background:var(--sand-light);display:flex;align-items:center;justify-content:center;padding:14%;margin-bottom:.9rem}
+.item-art svg{width:100%;height:auto}
+.item h3{font-size:1.2rem;margin-bottom:.15rem}
+.item p{color:var(--ink-soft);font-size:.95rem}
+.item .price{font-size:1.25rem;margin-top:.35rem}
+
+/* trade-up */
+.tradeup{background:var(--sky-light);border-radius:28px;padding:2rem 1.5rem;display:grid;gap:1.5rem;align-items:center}
+@media (min-width:760px){.tradeup{grid-template-columns:1.2fr 1fr;padding:2.75rem;gap:3rem}}
+.tradeup p{margin-top:.75rem;font-size:1.1rem}
+.tradeup ol{margin:1.2rem 0 0;padding-left:1.3rem;font-weight:700}
+.tradeup li+li{margin-top:.4rem}
+.tradeup svg{width:min(100%,360px);margin-inline:auto}
+
+/* divot */
+.meet{display:grid;gap:1.5rem;align-items:center}
+@media (min-width:760px){.meet{grid-template-columns:1fr 1.3fr;gap:3rem}}
+.meet svg{width:min(100%,320px);margin-inline:auto}
+.meet p{margin-top:.75rem;font-size:1.1rem;max-width:52ch}
+
+/* footer */
+footer{background:var(--turf-deep);color:#EAF5EC;padding:3rem 0 2rem}
+footer .wrap{display:grid;gap:2rem}
+@media (min-width:760px){footer .wrap{grid-template-columns:1.4fr 1fr 1fr}}
+footer .brand{color:#fff;margin-bottom:.75rem}
+footer h3{color:#fff;font-size:1.15rem;margin-bottom:.6rem}
+footer ul{list-style:none;margin:0;padding:0}
+footer li+li{margin-top:.35rem}
+footer a{text-decoration:none;color:#EAF5EC}
+footer a:hover{text-decoration:underline;text-underline-offset:4px}
+.legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.18);padding-top:1.25rem;font-size:.9rem;color:#BFDCC6}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Molehill Golf Co. home">
+      <svg viewBox="0 0 48 40" aria-hidden="true"><path d="M2 38 Q24 4 46 38 Z" fill="#3FA34D"/><ellipse cx="24" cy="30" rx="9" ry="3.2" fill="#1B2E1B"/><rect x="29" y="8" width="2.4" height="22" fill="#fff"/><path d="M31.4 8 L43 13 L31.4 18 Z" fill="#F28C28"/></svg>
+      Molehill Golf Co.
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#sets">Club sets</a>
+      <a href="#sizing">Find your size</a>
+      <a href="#gear">Balls and tees</a>
+      <a href="#divot">Meet Divot</a>
+    </nav>
+    <a class="btn btn-flag" href="#sets">Shop</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <h1>Golf gear built for small hands.</h1>
+      <p>Junior club sets, soft-strike balls and big tees for kids from 36 to 60 inches tall. Light enough to swing, tough enough for the backyard.</p>
+      <div class="hero-cta">
+        <a class="btn btn-flag" href="#sets">Shop club sets</a>
+        <a class="btn btn-line" href="#sizing">Find the right size</a>
+      </div>
+    </div>
+
+    <svg class="scene" viewBox="0 0 480 360" role="img" aria-labelledby="scene-title">
+      <title id="scene-title">Divot the mole popping out of a golf hole on a small green hill, next to a flag and a ball on a tee</title>
+      <defs>
+        <clipPath id="holeclip"><rect x="0" y="0" width="480" height="230"/></clipPath>
+      </defs>
+      <!-- clouds -->
+      <g fill="#fff" opacity=".9">
+        <ellipse cx="78" cy="78" rx="34" ry="16"/><ellipse cx="100" cy="66" rx="24" ry="18"/><ellipse cx="56" cy="70" rx="20" ry="14"/>
+        <ellipse cx="408" cy="120" rx="30" ry="13"/><ellipse cx="426" cy="110" rx="20" ry="15"/>
+      </g>
+      <!-- mound -->
+      <path d="M0 360 C90 150 390 150 480 360 Z" fill="#3FA34D"/>
+      <path d="M46 330 C120 190 360 190 434 330" fill="none" stroke="#5DBD69" stroke-width="10" stroke-linecap="round" opacity=".7"/>
+      <!-- hole (back) -->
+      <ellipse cx="240" cy="226" rx="80" ry="24" fill="#2E7D3A"/>
+      <ellipse cx="240" cy="224" rx="66" ry="18" fill="#1B2E1B"/>
+      <!-- flag -->
+      <rect x="296" y="50" width="5" height="176" rx="2.5" fill="#fff"/>
+      <circle cx="298.5" cy="50" r="5" fill="#F6D98A"/>
+      <path d="M301 54 L362 76 L301 98 Z" fill="#F28C28"/>
+      <!-- ball on a tee -->
+      <rect x="97" y="240" width="6" height="18" rx="3" fill="#FBEFC8"/>
+      <path d="M90 238 L110 238 L106 246 L94 246 Z" fill="#F6D98A"/>
+      <circle cx="100" cy="228" r="12" fill="#fff"/>
+      <g fill="#DDE3E6"><circle cx="95" cy="225" r="1.6"/><circle cx="102" cy="223" r="1.6"/><circle cx="106" cy="230" r="1.6"/><circle cx="98" cy="233" r="1.6"/></g>
+      <!-- Divot, clipped so he rises out of the hole -->
+      <g clip-path="url(#holeclip)">
+        <g class="divot-body">
+          <path d="M172 240 Q172 112 240 112 Q308 112 308 240 Z" fill="#6B4A2E"/>
+          <!-- visor band + brim -->
+          <path d="M182 146 Q240 106 298 146 L298 156 Q240 120 182 156 Z" fill="#F28C28"/>
+          <path d="M170 150 Q240 136 310 150 Q240 172 170 150 Z" fill="#E07A1F"/>
+          <!-- snout -->
+          <ellipse cx="240" cy="192" rx="34" ry="26" fill="#C4956A"/>
+          <ellipse cx="240" cy="182" rx="13" ry="9" fill="#F4A3B5"/>
+          <ellipse cx="236" cy="180" rx="4" ry="2.5" fill="#FBD2DC"/>
+          <!-- eyes -->
+          <circle cx="216" cy="164" r="5.5" fill="#1B1B1B"/><circle cx="218" cy="162" r="1.8" fill="#fff"/>
+          <circle cx="264" cy="164" r="5.5" fill="#1B1B1B"/><circle cx="266" cy="162" r="1.8" fill="#fff"/>
+          <!-- cheeks -->
+          <ellipse cx="200" cy="184" rx="9" ry="6" fill="#B86A48" opacity=".55"/>
+          <ellipse cx="280" cy="184" rx="9" ry="6" fill="#B86A48" opacity=".55"/>
+          <!-- smile -->
+          <path d="M226 204 Q240 214 254 204" fill="none" stroke="#3B2A1E" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- whiskers -->
+          <g stroke="#3B2A1E" stroke-width="2" stroke-linecap="round" opacity=".7">
+            <path d="M204 188 L178 182"/><path d="M204 196 L180 202"/>
+            <path d="M276 188 L302 182"/><path d="M276 196 L300 202"/>
+          </g>
+        </g>
+      </g>
+      <!-- hole (front rim) -->
+      <path d="M160 226 A80 24 0 0 0 320 226 Z" fill="#2E7D3A"/>
+      <path d="M174 224 A66 18 0 0 0 306 224 Z" fill="#1B2E1B"/>
+      <!-- paws over the rim -->
+      <g class="divot-paws" fill="#F0C9B0">
+        <ellipse cx="188" cy="224" rx="22" ry="12"/>
+        <ellipse cx="292" cy="224" rx="22" ry="12"/>
+        <g fill="#E4B09A"><ellipse cx="176" cy="220" rx="4" ry="5"/><ellipse cx="186" cy="217" rx="4" ry="5"/><ellipse cx="196" cy="219" rx="4" ry="5"/><ellipse cx="284" cy="219" rx="4" ry="5"/><ellipse cx="294" cy="217" rx="4" ry="5"/><ellipse cx="304" cy="220" rx="4" ry="5"/></g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section class="ground" aria-label="Why Molehill">
+  <div class="wrap">
+    <div class="fact">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="4" width="10" height="32" rx="3" fill="#fff"/><g stroke="#3FA34D" stroke-width="2"><path d="M8 10h6"/><path d="M8 17h4"/><path d="M8 24h6"/><path d="M8 31h4"/></g><path d="M24 30 L24 10" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M20 15 L24 9 L28 15" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div><strong>Sized by height, not age</strong><span>Three sets cover 36 to 60 inches. Measure your kid, pick the set, done.</span></div>
+    </div>
+    <div class="fact">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="14" fill="#fff"/><g fill="#B9D9BF"><circle cx="15" cy="16" r="1.8"/><circle cx="22" cy="13" r="1.8"/><circle cx="26" cy="21" r="1.8"/><circle cx="18" cy="24" r="1.8"/><circle cx="24" cy="27" r="1.8"/></g></svg>
+      <div><strong>Soft-strike balls</strong><span>Foam balls fly straight outside and bounce harmlessly off the living room lamp.</span></div>
+    </div>
+    <div class="fact">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 26 A12 12 0 1 1 12 31" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/><path d="M6 24 L9 32 L16 29" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div><strong>Trade up as they grow</strong><span>Send back an outgrown set and take 30% off the next size.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="sets">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>Club sets</h2>
+      <p>Every set has a lightweight graphite shaft, an oversized grip and a stand bag that a kid can carry. Colors match the size band, so the right bag is easy to spot from across the range.</p>
+    </div>
+    <div class="sets">
+      <article class="set set-sprout" id="set-sprout">
+        <div class="set-art">
+          <svg viewBox="0 0 220 140" aria-hidden="true">
+            <g stroke="#5A6B75" stroke-width="4" stroke-linecap="round"><path d="M92 128 L118 30"/><path d="M110 128 L134 36"/><path d="M128 128 L150 44"/></g>
+            <ellipse cx="116" cy="26" rx="11" ry="8" fill="#2E3A44"/>
+            <path d="M130 40 L146 34 L148 42 L134 48 Z" fill="#8A9AA6"/>
+            <rect x="146" y="38" width="16" height="8" rx="2" fill="#2E3A44" transform="rotate(20 154 42)"/>
+            <path d="M70 60 Q60 130 70 132 L140 132 Q150 130 140 60 Q105 50 70 60 Z" fill="#3B8FD1"/>
+            <path d="M70 60 Q105 70 140 60 L138 72 Q105 82 72 72 Z" fill="#2A6DA3"/>
+            <rect x="64" y="86" width="82" height="14" rx="7" fill="#1F4E78"/>
+            <path d="M40 136 L74 96" stroke="#5A6B75" stroke-width="4" stroke-linecap="round"/>
+            <path d="M170 136 L138 96" stroke="#5A6B75" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="set-body">
+          <span class="size-tag">36 to 44 in</span>
+          <h3>Sprout set</h3>
+          <ul>
+            <li>Driver, 7-iron and putter</li>
+            <li>Stand bag with a shoulder strap</li>
+            <li>Ages 3 to 5, usually</li>
+          </ul>
+          <div class="set-foot"><span class="price">$89</span><a class="btn btn-flag" href="#">Add to bag</a></div>
+        </div>
+      </article>
+
+      <article class="set set-fairway" id="set-fairway">
+        <div class="set-art">
+          <svg viewBox="0 0 220 140" aria-hidden="true">
+            <g stroke="#5A6B75" stroke-width="4" stroke-linecap="round"><path d="M84 128 L106 24"/><path d="M98 128 L122 28"/><path d="M112 128 L136 34"/><path d="M126 128 L150 40"/><path d="M140 128 L164 48"/></g>
+            <ellipse cx="104" cy="20" rx="11" ry="8" fill="#2E3A44"/>
+            <ellipse cx="120" cy="25" rx="9" ry="7" fill="#2E3A44"/>
+            <path d="M132 38 L148 32 L150 40 L136 46 Z" fill="#8A9AA6"/>
+            <path d="M146 44 L162 38 L164 46 L150 52 Z" fill="#8A9AA6"/>
+            <rect x="160" y="42" width="16" height="8" rx="2" fill="#2E3A44" transform="rotate(20 168 46)"/>
+            <path d="M66 58 Q54 130 66 132 L144 132 Q156 130 144 58 Q105 48 66 58 Z" fill="#3FA34D"/>
+            <path d="M66 58 Q105 68 144 58 L142 70 Q105 80 68 70 Z" fill="#2E7D3A"/>
+            <rect x="60" y="86" width="90" height="14" rx="7" fill="#1E5E32"/>
+            <path d="M36 136 L70 96" stroke="#5A6B75" stroke-width="4" stroke-linecap="round"/>
+            <path d="M176 136 L142 96" stroke="#5A6B75" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="set-body">
+          <span class="size-tag">44 to 52 in</span>
+          <h3>Fairway set</h3>
+          <ul>
+            <li>Driver, hybrid, 7-iron, 9-iron and putter</li>
+            <li>Stand bag with two pockets</li>
+            <li>Ages 5 to 8, usually</li>
+          </ul>
+          <div class="set-foot"><span class="price">$139</span><a class="btn btn-flag" href="#">Add to bag</a></div>
+        </div>
+      </article>
+
+      <article class="set set-birdie" id="set-birdie">
+        <div class="set-art">
+          <svg viewBox="0 0 220 140" aria-hidden="true">
+            <g stroke="#5A6B75" stroke-width="4" stroke-linecap="round"><path d="M78 128 L98 18"/><path d="M90 128 L112 22"/><path d="M102 128 L126 28"/><path d="M114 128 L140 34"/><path d="M126 128 L154 40"/><path d="M138 128 L166 46"/><path d="M150 128 L178 54"/></g>
+            <ellipse cx="96" cy="14" rx="11" ry="8" fill="#2E3A44"/>
+            <ellipse cx="110" cy="19" rx="9" ry="7" fill="#2E3A44"/>
+            <path d="M122 32 L138 26 L140 34 L126 40 Z" fill="#8A9AA6"/>
+            <path d="M136 38 L152 32 L154 40 L140 46 Z" fill="#8A9AA6"/>
+            <path d="M150 44 L166 38 L168 46 L154 52 Z" fill="#8A9AA6"/>
+            <path d="M163 50 L179 44 L181 52 L167 58 Z" fill="#8A9AA6"/>
+            <rect x="174" y="50" width="16" height="8" rx="2" fill="#2E3A44" transform="rotate(20 182 54)"/>
+            <path d="M62 56 Q48 130 62 132 L148 132 Q162 130 148 56 Q105 46 62 56 Z" fill="#F28C28"/>
+            <path d="M62 56 Q105 66 148 56 L146 68 Q105 78 64 68 Z" fill="#D9741A"/>
+            <rect x="56" y="86" width="98" height="14" rx="7" fill="#A8560E"/>
+            <path d="M32 136 L66 96" stroke="#5A6B75" stroke-width="4" stroke-linecap="round"/>
+            <path d="M180 136 L146 96" stroke="#5A6B75" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="set-body">
+          <span class="size-tag">52 to 60 in</span>
+          <h3>Birdie set</h3>
+          <ul>
+            <li>Driver, 3-wood, hybrid, 6-iron, 8-iron, wedge and putter</li>
+            <li>Stand bag with a rain hood</li>
+            <li>Ages 8 to 12, usually</li>
+          </ul>
+          <div class="set-foot"><span class="price">$199</span><a class="btn btn-flag" href="#">Add to bag</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="sizing" style="padding-top:0">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>Find the right size</h2>
+      <p>Measure from the floor to the top of the head, in shoes. Between two sets? Size up. Kids grow into longer clubs faster than they outgrow a swing.</p>
+    </div>
+    <div class="finder-wrap">
+      <div class="finder">
+        <label class="big" for="height">Your kid's height</label>
+        <div class="readout"><span id="height-value">46</span><small id="height-unit">in</small></div>
+        <input type="range" id="height" min="34" max="66" step="1" value="46" aria-describedby="verdict-title">
+        <div class="range-ends"><span id="end-min">34 in</span><span id="end-max">66 in</span></div>
+        <div class="units" role="group" aria-label="Units">
+          <button type="button" data-unit="in" aria-pressed="true">inches</button>
+          <button type="button" data-unit="cm" aria-pressed="false">centimeters</button>
+        </div>
+        <p class="finder-note">Ranges are the same for boys and girls. If your kid is tall for their age, trust the tape, not the birthday.</p>
+      </div>
+      <div class="verdict" aria-live="polite">
+        <h3 id="verdict-title">Fairway set</h3>
+        <div class="range" id="verdict-range">44 to 52 in</div>
+        <p id="verdict-text">Five clubs and a two-pocket stand bag. At 46 inches the 7-iron reaches just past the hip, which is where a junior club should sit at address.</p>
+        <a class="btn btn-flag" id="verdict-link" href="#set-fairway">See the Fairway set</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="gear" style="padding-top:0">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>Balls, tees and practice</h2>
+      <p>Everything a small golfer needs besides the clubs. Foam balls for indoors, tall tees for a big driver head, a mat for the hallway and flags for the lawn.</p>
+    </div>
+    <div class="gear">
+      <a class="item" href="#">
+        <div class="item-art">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="40" cy="70" r="26" fill="#F6D98A"/><circle cx="82" cy="62" r="26" fill="#F28C28"/><circle cx="60" cy="34" r="22" fill="#3FA34D"/>
+            <g fill="rgba(0,0,0,.14)"><circle cx="32" cy="64" r="2.4"/><circle cx="44" cy="60" r="2.4"/><circle cx="50" cy="76" r="2.4"/><circle cx="36" cy="80" r="2.4"/><circle cx="74" cy="56" r="2.4"/><circle cx="90" cy="54" r="2.4"/><circle cx="94" cy="70" r="2.4"/><circle cx="80" cy="74" r="2.4"/><circle cx="54" cy="28" r="2.4"/><circle cx="66" cy="26" r="2.4"/><circle cx="60" cy="42" r="2.4"/></g>
+          </svg>
+        </div>
+        <h3>Soft-strike foam balls</h3>
+        <p>12-pack in three colors. Flies like a real ball, lands like a marshmallow.</p>
+        <div class="price">$14</div>
+      </a>
+      <a class="item" href="#">
+        <div class="item-art">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <g fill="#3B8FD1"><path d="M22 34 L50 34 L44 46 L28 46 Z"/><path d="M33 46 L39 46 L37 96 L35 96 Z"/></g>
+            <g fill="#F28C28"><path d="M46 22 L74 22 L68 34 L52 34 Z"/><path d="M57 34 L63 34 L61 96 L59 96 Z"/></g>
+            <g fill="#3FA34D"><path d="M70 30 L98 30 L92 42 L76 42 Z"/><path d="M81 42 L87 42 L85 96 L83 96 Z"/></g>
+          </svg>
+        </div>
+        <h3>Big-top tees</h3>
+        <p>2¾ inch tees with a wide cup, so the ball stays put while a big driver comes through.</p>
+        <div class="price">$6</div>
+      </a>
+      <a class="item" href="#">
+        <div class="item-art">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <path d="M18 96 L46 28 L74 28 L102 96 Z" fill="#3FA34D"/>
+            <path d="M28 96 L50 40 L70 40 L92 96 Z" fill="#5DBD69" opacity=".6"/>
+            <ellipse cx="60" cy="42" rx="8" ry="3.5" fill="#1B2E1B"/>
+            <rect x="63" y="14" width="2.5" height="28" fill="#fff"/><path d="M65.5 14 L80 19 L65.5 24 Z" fill="#F28C28"/>
+            <circle cx="52" cy="82" r="8" fill="#fff"/><g fill="#DDE3E6"><circle cx="49" cy="80" r="1.3"/><circle cx="55" cy="79" r="1.3"/><circle cx="53" cy="86" r="1.3"/></g>
+          </svg>
+        </div>
+        <h3>Hallway putting mat</h3>
+        <p>Six feet of true-roll turf with a cup at the end. Rolls up and slides under a bed.</p>
+        <div class="price">$39</div>
+      </a>
+      <a class="item" href="#">
+        <div class="item-art">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <path d="M8 104 C40 80 80 80 112 104 Z" fill="#3FA34D"/>
+            <ellipse cx="62" cy="92" rx="18" ry="6" fill="#2E7D3A"/><ellipse cx="62" cy="91" rx="13" ry="4" fill="#1B2E1B"/>
+            <rect x="60" y="18" width="4" height="74" rx="2" fill="#fff"/>
+            <path d="M64 20 L100 32 L64 44 Z" fill="#F28C28"/>
+            <rect x="28" y="40" width="3" height="52" rx="1.5" fill="#fff"/>
+            <path d="M31 42 L56 50 L31 58 Z" fill="#3B8FD1"/>
+          </svg>
+        </div>
+        <h3>Backyard flag set</h3>
+        <p>Two pin flags and two drop-in cups. Turns any patch of lawn into a two-hole course.</p>
+        <div class="price">$24</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="tradeup" style="padding-top:0">
+  <div class="wrap">
+    <div class="tradeup">
+      <div>
+        <h2>Trade up as they grow</h2>
+        <p>Outgrown a set? Send it back and take 30% off the next size. Returned sets are cleaned, regripped and donated to school golf programs, so nothing ends up in a closet.</p>
+        <ol>
+          <li>Order the next size up.</li>
+          <li>Pack the old set in the new box.</li>
+          <li>Stick on the prepaid label and drop it off.</li>
+        </ol>
+      </div>
+      <svg viewBox="0 0 360 220" aria-hidden="true">
+        <path d="M0 220 C70 100 290 100 360 220 Z" fill="#BFE3B4"/>
+        <g stroke="#5A6B75" stroke-width="5" stroke-linecap="round"><path d="M64 178 L84 96"/><path d="M84 178 L106 102"/></g>
+        <ellipse cx="82" cy="92" rx="10" ry="7" fill="#2E3A44"/>
+        <path d="M102 106 L118 100 L120 108 L106 114 Z" fill="#8A9AA6"/>
+        <path d="M44 128 Q34 182 44 184 L104 184 Q114 182 104 128 Q74 118 44 128 Z" fill="#3B8FD1"/>
+        <g stroke="#5A6B75" stroke-width="5" stroke-linecap="round"><path d="M236 178 L256 74"/><path d="M256 178 L280 82"/><path d="M276 178 L300 92"/></g>
+        <ellipse cx="254" cy="70" rx="12" ry="8" fill="#2E3A44"/>
+        <ellipse cx="272" cy="78" rx="10" ry="7" fill="#2E3A44"/>
+        <path d="M296 96 L314 90 L316 98 L300 104 Z" fill="#8A9AA6"/>
+        <path d="M210 118 Q196 182 210 184 L292 184 Q306 182 292 118 Q251 106 210 118 Z" fill="#3FA34D" stroke="#2E7D3A" stroke-width="3"/>
+        <path d="M140 150 L200 150" stroke="#1E5E32" stroke-width="6" stroke-linecap="round"/>
+        <path d="M188 136 L204 150 L188 164" fill="none" stroke="#1E5E32" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="divot" style="padding-top:0">
+  <div class="wrap">
+    <div class="meet">
+      <svg viewBox="0 0 320 300" role="img" aria-label="Divot the mole waving">
+        <path d="M0 300 C60 160 260 160 320 300 Z" fill="#3FA34D"/>
+        <ellipse cx="160" cy="236" rx="72" ry="22" fill="#2E7D3A"/>
+        <ellipse cx="160" cy="234" rx="58" ry="16" fill="#1B2E1B"/>
+        <path d="M100 248 Q100 130 160 130 Q220 130 220 248 Z" fill="#6B4A2E"/>
+        <path d="M108 162 Q160 126 212 162 L212 172 Q160 138 108 172 Z" fill="#F28C28"/>
+        <path d="M98 166 Q160 152 222 166 Q160 186 98 166 Z" fill="#E07A1F"/>
+        <ellipse cx="160" cy="204" rx="30" ry="23" fill="#C4956A"/>
+        <ellipse cx="160" cy="196" rx="12" ry="8" fill="#F4A3B5"/>
+        <circle cx="139" cy="180" r="5" fill="#1B1B1B"/><circle cx="141" cy="178" r="1.6" fill="#fff"/>
+        <circle cx="181" cy="180" r="5" fill="#1B1B1B"/><circle cx="183" cy="178" r="1.6" fill="#fff"/>
+        <path d="M148 214 Q160 224 172 214" fill="none" stroke="#3B2A1E" stroke-width="3.5" stroke-linecap="round"/>
+        <g stroke="#3B2A1E" stroke-width="2" stroke-linecap="round" opacity=".7"><path d="M128 200 L104 194"/><path d="M128 208 L106 214"/><path d="M192 200 L216 194"/><path d="M192 208 L214 214"/></g>
+        <path d="M88 236 A72 22 0 0 0 232 236 Z" fill="#2E7D3A"/>
+        <path d="M102 234 A58 16 0 0 0 218 234 Z" fill="#1B2E1B"/>
+        <path d="M212 214 L232 186" stroke="#6B4A2E" stroke-width="24" stroke-linecap="round"/>
+        <g fill="#F0C9B0"><ellipse cx="116" cy="234" rx="20" ry="11"/><ellipse cx="236" cy="176" rx="12" ry="18" transform="rotate(-18 236 176)"/></g>
+        <g fill="#E4B09A"><ellipse cx="105" cy="230" rx="3.6" ry="4.6"/><ellipse cx="114" cy="227" rx="3.6" ry="4.6"/><ellipse cx="123" cy="229" rx="3.6" ry="4.6"/><ellipse cx="229" cy="160" rx="3.6" ry="4.6"/><ellipse cx="237" cy="157" rx="3.6" ry="4.6"/><ellipse cx="245" cy="161" rx="3.6" ry="4.6"/></g>
+      </svg>
+      <div>
+        <h2>Meet Divot</h2>
+        <p>Divot lives under the 18th green. Every time a putt drops, he pops up to see who made it. He is on every Molehill bag, ball and tee, so a kid can find their own gear from across the range.</p>
+        <p>Divot's rule for every product we make: if it is too heavy for him to drag into the hole, it is too heavy for a six-year-old.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#top">
+        <svg viewBox="0 0 48 40" aria-hidden="true"><path d="M2 38 Q24 4 46 38 Z" fill="#3FA34D"/><ellipse cx="24" cy="30" rx="9" ry="3.2" fill="#1B2E1B"/><rect x="29" y="8" width="2.4" height="22" fill="#fff"/><path d="M31.4 8 L43 13 L31.4 18 Z" fill="#F28C28"/></svg>
+        Molehill Golf Co.
+      </a>
+      <p>Golf gear built for small hands. Free shipping on orders over $50 and 30-day returns on everything, grass stains included.</p>
+    </div>
+    <div>
+      <h3>Shop</h3>
+      <ul><li><a href="#sets">Club sets</a></li><li><a href="#gear">Balls and tees</a></li><li><a href="#gear">Practice</a></li></ul>
+    </div>
+    <div>
+      <h3>Help</h3>
+      <ul><li><a href="#sizing">Sizing guide</a></li><li><a href="#tradeup">Trade-up program</a></li><li><a href="#divot">Meet Divot</a></li></ul>
+    </div>
+    <div class="legal">© 2026 Molehill Golf Co. Divot and the Molehill mark are original characters of this site.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var sets=[
+    {id:'sprout',name:'Sprout set',min:36,max:44,text:'Three clubs and a light stand bag. The putter is usually the first club a small kid falls in love with, so it gets the biggest grip.'},
+    {id:'fairway',name:'Fairway set',min:44,max:52,text:'Five clubs and a two-pocket stand bag. The 7-iron reaches just past the hip, which is where a junior club should sit at address.'},
+    {id:'birdie',name:'Birdie set',min:52,max:60,text:'Seven clubs including a 3-wood and a wedge, in a stand bag with a rain hood. Built for kids who already play nine holes.'}
+  ];
+  var slider=document.getElementById('height');
+  var val=document.getElementById('height-value');
+  var unitEl=document.getElementById('height-unit');
+  var endMin=document.getElementById('end-min');
+  var endMax=document.getElementById('end-max');
+  var title=document.getElementById('verdict-title');
+  var range=document.getElementById('verdict-range');
+  var text=document.getElementById('verdict-text');
+  var link=document.getElementById('verdict-link');
+  var unit='in';
+  function fmt(inches){return unit==='cm'?Math.round(inches*2.54)+' cm':inches+' in';}
+  function render(){
+    var h=parseInt(slider.value,10);
+    val.textContent=unit==='cm'?Math.round(h*2.54):h;
+    unitEl.textContent=unit;
+    endMin.textContent=fmt(34); endMax.textContent=fmt(66);
+    var fit=null;
+    for(var i=0;i<sets.length;i++){ if(h>=sets[i].min && h<sets[i].max){fit=sets[i];} }
+    if(h>=60){fit=null;}
+    document.querySelectorAll('.set').forEach(function(el){el.classList.remove('is-fit');});
+    if(fit){
+      title.textContent=fit.name;
+      range.textContent=fmt(fit.min)+' to '+fmt(fit.max);
+      text.textContent=fit.text;
+      link.textContent='See the '+fit.name;
+      link.href='#set-'+fit.id;
+      link.hidden=false;
+      var card=document.getElementById('set-'+fit.id); if(card){card.classList.add('is-fit');}
+    } else if(h<36){
+      title.textContent='Almost there';
+      range.textContent='Under '+fmt(36);
+      text.textContent='Start with the Sprout putter on its own. Most kids grow into the full Sprout set within a season, and the trade-up discount applies when they do.';
+      link.textContent='See the Sprout set'; link.href='#set-sprout'; link.hidden=false;
+    } else {
+      title.textContent='Ready for bigger clubs';
+      range.textContent='Over '+fmt(60);
+      text.textContent='Kids over 60 inches usually fit petite adult clubs. The Birdie set is the last stop on the Molehill line, and its trade-up discount works toward any set.';
+      link.textContent='See the Birdie set'; link.href='#set-birdie'; link.hidden=false;
+    }
+  }
+  slider.addEventListener('input',render);
+  document.querySelectorAll('.units button').forEach(function(b){
+    b.addEventListener('click',function(){
+      unit=b.getAttribute('data-unit');
+      document.querySelectorAll('.units button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+      render();
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>
